@@ -4,8 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 import xgboost as xgb
-import joblib
-import gzip
+
 
 # Machine learning model: XGBoost 
 

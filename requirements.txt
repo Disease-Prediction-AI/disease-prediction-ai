@@ -27,7 +27,7 @@ packaging==23.2
 pandas==2.1.3
 Pillow==10.1.0
 plotly==5.18.0
-protobuf==4.25.0
+# protobuf==4.25.0
 pyarrow==14.0.1
 pydeck==0.8.1b0
 Pygments==2.16.1
@@ -58,3 +58,4 @@ validators==0.22.0
 watchdog==3.0.0
 xgboost==2.0.2
 zipp==3.17.0
+tensorflow==2.15.0

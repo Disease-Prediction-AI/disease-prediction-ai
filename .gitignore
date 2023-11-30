@@ -1,0 +1,6 @@
+
+.vscode
+.venv
+
+data/chest_xray
+**/.DS_Store
