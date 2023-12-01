@@ -2,6 +2,7 @@ import xgboost as xgb
 import pandas as pd
 import numpy as np
 import math 
+import sys
 
 class DiseaseModel:
 
@@ -90,11 +91,14 @@ class DiseaseModel:
 
 
 if __name__ == "__main__":
+
+    symptoms = sys.argv[1:]
+
     model = DiseaseModel()
     model.load_xgboost("model/model_disease_prediction.json")
-    disease_name, disease_prob = model.predict([
-        "muscle_wasting", "patches_in_throat", "high_fever", "extra_marital_contacts"
-    ])
+    
+
+    disease_name, disease_prob = model.predict(symptoms)
 
     print(f'disease name: { disease_name }\n')
     print(f'disease probality: { math.ceil(disease_prob * 100) } %')
