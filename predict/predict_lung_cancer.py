@@ -46,7 +46,23 @@ class LungCancerModel:
 
 if __name__ == "__main__":
 
-    user_input = sys.argv[1:]
+    user_input = [
+        "M",
+        "55",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+        "NO",
+    ]
 
     lung_cancer_model = LungCancerModel()
     
