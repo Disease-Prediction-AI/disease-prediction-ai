@@ -1,7 +1,7 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import joblib
 import sys
+import json
 
 class LungCancerModel:
     def __init__(self):
@@ -45,8 +45,9 @@ class LungCancerModel:
 
 
 if __name__ == "__main__":
+
     user_input = sys.argv[1:]
-    
+
     lung_cancer_model = LungCancerModel()
     
     lung_cancer_model.load_model('model/model_lung_cancer.sav')
@@ -56,4 +57,14 @@ if __name__ == "__main__":
 
     cancer_prediction = lung_cancer_model.predict_cancer(preprocessed_data)
 
-    print('Prediction:', cancer_prediction)
+    print('prediction:', cancer_prediction)
+
+    response_dict = {
+        "cancer_prediction": cancer_prediction
+    }
+
+    # Convert the dictionary to a JSON-formatted string
+    json_response = json.dumps(response_dict)
+
+    # Print the JSON response
+    print(json_response)

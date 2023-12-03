@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import math 
 import sys
+import json
+
 
 class DiseaseModel:
 
@@ -96,13 +98,25 @@ if __name__ == "__main__":
 
     model = DiseaseModel()
     model.load_xgboost("model/model_disease_prediction.json")
-    
 
     disease_name, disease_prob = model.predict(symptoms)
 
-    print(f'disease name: { disease_name }\n')
-    print(f'disease probality: { math.ceil(disease_prob * 100) } %')
+    # print(f'disease name: { disease_name }\n')
+    # print(f'disease probality: { math.ceil(disease_prob * 100) } %')
 
-    print(model.describe_predicted_disease())
-    print(model.predicted_disease_precautions())
+    # print(model.describe_predicted_disease())
+    # print(model.predicted_disease_precautions())
+
+    response_dict = {
+        "disease": disease_name,
+        "probability": math.ceil(disease_prob * 100),
+        "description": model.describe_predicted_disease(),
+        "precautions": model.predicted_disease_precautions()
+    }
+
+    # Convert the dictionary to a JSON-formatted string
+    json_response = json.dumps(response_dict)
+
+    # Print the JSON response
+    print(json_response)
 
