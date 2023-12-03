@@ -14,7 +14,7 @@ class LungCancerModel:
         # Convert user input to a DataFrame
         user_data = pd.DataFrame({
             'GENDER': [user_input[0]],
-            'AGE': [int(user_input[1])],
+            'AGE': [user_input[1]],
             'SMOKING': [user_input[2]],
             'YELLOW_FINGERS': [user_input[3]],
             'ANXIETY': [user_input[4]],
@@ -30,7 +30,7 @@ class LungCancerModel:
             'CHESTPAIN': [user_input[14]]
         })
         # Map string values to numeric
-        user_data['GENDER'].replace({'M': 0, 'F': 1}, inplace=True)
+        user_data['GENDER'].replace({'M': "0", 'F': "1"}, inplace=True)
         user_data.replace({'NO': 1, 'YES': 2}, inplace=True)
 
         # Strip leading and trailing whitespaces from column names
@@ -57,12 +57,11 @@ if __name__ == "__main__":
 
     cancer_prediction = lung_cancer_model.predict_cancer(preprocessed_data)
 
-    print('prediction:', cancer_prediction)
+    # print('prediction:', cancer_prediction)
 
     response_dict = {
-        "cancer_prediction": cancer_prediction
+        "cancer_prediction": cancer_prediction[0]
     }
-
     # Convert the dictionary to a JSON-formatted string
     json_response = json.dumps(response_dict)
 
